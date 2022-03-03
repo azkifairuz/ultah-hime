@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD HIME</title>
+    <style>
+        .container {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'bakbak one',cursive;
+        }
+        img{
+            width: 100px;
+            display: inline-block;
+            position: relative;
+        }
+        img.hiu{
+            margin-top: 20px;
+            width: 130px;
+        }
+        
+        
+        </style>
+</head>
+<body>
+    <audio id="sound" src="wish.mp3"></audio>
+    <div class="container">
+        <p id="p"></p>
+        <marquee direction="right"><img class="hiu"src="hiu.gif" alt="hiu bawa balon"></marquee>
+        <img id="btn" src="play2.png" alt="play">
+        <marquee class="cat" direction="right"><img class="hiu"src="cat.gif" alt="cat"></marquee>
+    </div>
+    <script>
+        const wish = prompt("Make A Wish")
+        alert(`wish mu :` + wish + "\n semoga itu semua bisa tercapai ditahun ini")
+        const p = document.getElementById("p").innerHTML="Wish : \n" + wish
+        const b = document.getElementById("btn")
+        b.addEventListener("click",function(){  
+            document.getElementById("sound").play()
+        })
+    </script>
+</body>
+</html>

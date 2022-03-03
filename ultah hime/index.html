@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD HIME</title><link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      height: 100vh;
+      background: linear-gradient(110deg, #e63946, #f94144);
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 210px;
+    }
+    h1#text {
+      font-size: 80px;
+      margin-bottom: 2px;
+      font-family: "Courier New", Courier, monospace;
+    }
+    h1.k {
+      font-size: 78px;
+      margin-top: 1px;
+      font-family: monospace;
+    }
+
+    .end {
+      display: none;
+      font-family: "pacifico";
+    }
+    .end h1 {
+      font-size: 45px;
+      margin-bottom: 1px;
+      color: #b2f7ef;
+    }
+    .end .btn {
+      margin-top: 10px;
+      font-size: 20px;
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .end img {
+      width: 200px;
+      display: inline-block;
+    }
+    .play {
+     display: inline-block;
+
+    }
+    .play:hover {
+      cursor: pointer;
+    }
+    .end h2 {
+      margin-top: 17px;
+      margin-bottom: 15px;
+      font-size: 30px;
+      font-family: 'Press Start 2P', cursive;
+      color: #b6ccfe;
+    }
+    .end p {
+      margin-top: 0px;
+      text-decoration: underline;
+      font-family: monospace;
+      font-size: 16px;
+    }
+    .container img {
+      width: 200px;
+    }
+
+
+
+    @media screen and (max-width: 500px) {
+      h1.k {
+        font-size: 50px;
+        margin-top: 1px;
+        font-family: monospace;
+      }
+      h1#text {
+        font-size: 55px;
+        margin-bottom: 2px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      .end span {
+        display: inline-block;
+        margin-top: 15px;
+      }
+
+      .end h1 {
+          font-size: 40px;
+
+      }
+    }
+  </style>
+</head>
+<body>
+	<audio  src="hbd.mp3" id="sound" autoplay loop></audio>
+    <div class="container">
+        <h1 id="text">Coming Soon</h1>
+        <h1 class="k" id="timer"></h1>
+        <img src="https://media.giphy.com/media/4BJCvMoLPePq8/giphy.gif" alt="Tunggu ya" id="tunggu" />
+      </div>
+      <div class="end" id="end">
+        <h1>Otanjoubi  Omedetou</h1>
+        <h2>Hime Sama</h2>
+        <span class="play">
+          <img src="yato.jpg" alt="Play" />
+          <p>
+              <a href="gift.html">
+                  <button type="button" class="btn btn-light">Next</button>
+              </a>
+          </p>
+        </span>
+      </div>
+      <!-- javascript -->
+      <script>
+        const tujuan = new Date("Mar 7, 2021 00:00:00").getTime();
+        document.getElementById("sound").play()
+        setInterval(function () {
+          const sekarang = new Date().getTime();
+          const selisih = tujuan - sekarang;
+          const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+          const jam = Math.floor(
+            (selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+          const detik = Math.floor((selisih % (1000 * 60)) / 1000);
+          const timer = document.getElementById("timer");
+          timer.innerHTML = hari + ":" + jam + ":" + menit + ":" + detik;
+          const hilang = document.getElementById("text");
+          const warna = document.body;
+          let muncul = document.getElementById("end");
+          const tunggu = document.getElementById("tunggu");
+          //! after countdown style
+          if (selisih < 0) {
+            clearInterval;
+            warna.style.backgroundColor = "pink";
+            warna.style.color = "black";
+            hilang.style.display = "none";
+            timer.style.display = "none";
+            tunggu.style.display = "none";
+            muncul.style.display = "inline-block";
+  
+            // const play = document.getElementById("play");
+            // play.addEventListener("click", function () {
+            //   document.getElementById("sound").play();
+            // });
+          }
+        }, 1000);
+      </script>
+    
+</body>
+</html>
